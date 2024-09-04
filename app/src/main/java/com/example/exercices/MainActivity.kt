@@ -38,7 +38,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    name = "My Preview"
+)
 @Composable
 fun GreetingPreview() {
     ExercicesTheme {
