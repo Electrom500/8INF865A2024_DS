@@ -7,14 +7,18 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.style.TextAlign
@@ -30,9 +34,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ExercicesTheme {
-                GreetingText("Salut à toi !\nJ'espère que tu passes un bon moment. ",
-                    "Damien",
-                    modifier = Modifier.padding(16.dp))
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    GreetingImage("Salut à toi !\nJ'espère que tu passes un bon moment. ",
+                        "Damien",
+                        modifier = Modifier.padding(16.dp)
+                    )
+                }
             }
         }
     }
@@ -61,10 +71,21 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
 @Composable
 fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.androidparty)
-    Image(
-        painter = image,
-        contentDescription = "'Sup"
-    )
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = image,
+            contentDescription = "'Sup",
+            contentScale = ContentScale.Crop,
+            alpha = 0.8F
+        )
+        GreetingText(
+            message,
+            from,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(12.dp)
+        )
+    }
 }
 
 @Preview(
@@ -75,7 +96,7 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
 fun GreetingPreview(modifier: Modifier = Modifier) {
     ExercicesTheme {
         //GreetingText("Salut à toi !\nJ'espère que tu passes un bon moment. ","Damien")
-        GreetingImage("Salut à toi !\nJ'espère que tu passes un bon moment. ","Damien")
+        GreetingImage("Salut à toi !\nJ'espère que tu passes un bon moment ! ","Damien")
     }
 }
 
