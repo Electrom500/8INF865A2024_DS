@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Exercices</string>
+    <string name="greeting_text">"Salut à toi !\nJ'espère que tu passes un bon moment ! "</string>
+    <string name="from_text">Damien</string>
 </resources>

@@ -20,7 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Image
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,8 +38,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingImage("Salut à toi !\nJ'espère que tu passes un bon moment. ",
-                        "Damien",
+                    GreetingImage(
+                        stringResource(R.string.greeting_text),
+                        stringResource(R.string.from_text),
                         modifier = Modifier.padding(16.dp)
                     )
                 }
@@ -96,7 +97,6 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
 fun GreetingPreview(modifier: Modifier = Modifier) {
     ExercicesTheme {
         //GreetingText("Salut à toi !\nJ'espère que tu passes un bon moment. ","Damien")
-        GreetingImage("Salut à toi !\nJ'espère que tu passes un bon moment ! ","Damien")
+        GreetingImage(stringResource(R.string.greeting_text), stringResource(R.string.from_text))
     }
 }
-
