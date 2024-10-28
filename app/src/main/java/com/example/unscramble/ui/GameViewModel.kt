@@ -39,6 +39,8 @@ class GameViewModel : ViewModel() {
     private lateinit var currentWord: String
     // Set of words used in the game
     private var usedWords: MutableSet<String> = mutableSetOf()
+    var userGuess by mutableStateOf("")
+        private set
 
     init {
         resetGame()
@@ -69,4 +71,11 @@ class GameViewModel : ViewModel() {
         usedWords.clear()
         _uiState.value = GameUiState(currentScrambledWord = pickRandomWordAndShuffle())
     }
+
+    fun updateUserGuess(guessedWord: String){
+        userGuess = guessedWord
+    }
+
+
+
 }
